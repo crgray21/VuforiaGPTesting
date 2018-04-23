@@ -337,7 +337,9 @@
     <Compile Include="Assets\LeanTouch\Scripts\LeanSelectable.cs" />
     <Compile Include="Assets\LeanTouch\Scripts\LeanSnapshot.cs" />
     <Compile Include="Assets\LeanTouch\Scripts\LeanTouch.cs" />
+    <Compile Include="Assets\Scripts\AddBookShelf.cs" />
     <Compile Include="Assets\Scripts\AddSofaClick.cs" />
+    <Compile Include="Assets\Scripts\AddTable.cs" />
     <Compile Include="Assets\Scripts\DeployStageOnce.cs" />
     <Compile Include="Assets\Vuforia\Scripts\DefaultInitializationErrorHandler.cs" />
     <Compile Include="Assets\Vuforia\Scripts\DefaultTrackableEventHandler.cs" />

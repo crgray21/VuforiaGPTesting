@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class AddSofaClick : MonoBehaviour {
 
+//    Transform m_prefab;
+
     public void OnSofaClick()
     {
-        GameObject gameObject = GameObject.Find("Ground Plane Stage");
-        Transform parent = gameObject.transform;
- //       parent.GetChild(0).gameObject.AddComponent<String>() as String;
-
-
+        //Transform gameObject = Instantiate(m_prefab, new Vector3 (0, 0, 0), Quaternion.identity) as Transform;
+        //gameObject.parent = transform;
+        GameObject instance = Instantiate(Resources.Load("SofaFab", typeof(GameObject))) as GameObject;
+        instance.transform.parent = GameObject.Find("Ground Plane Stage").transform;
     }
 }
