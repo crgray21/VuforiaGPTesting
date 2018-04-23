@@ -15,6 +15,7 @@ ModelImporter:
     100014: Pillow_Big_Bottom
     100016: Sidewalls
     100018: //RootNode
+    100020: Sofa GM Plutone_OBJ_root
     400000: Back_cover
     400002: Feet
     400004: Frame_bottom
@@ -25,6 +26,7 @@ ModelImporter:
     400014: Pillow_Big_Bottom
     400016: Sidewalls
     400018: //RootNode
+    400020: Sofa GM Plutone_OBJ_root
     2100000: Back_coverMat
     2100002: FeetMat
     2100004: Frame_bottomMat
@@ -104,7 +106,7 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
-    preserveHierarchy: 0
+    preserveHierarchy: 1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
