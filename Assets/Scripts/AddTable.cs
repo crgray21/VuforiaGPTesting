@@ -8,7 +8,7 @@ public class AddTable : MonoBehaviour
     public void onTableClick()
     {
 
-        GameObject instance = Instantiate(Resources.Load("TableFab", typeof(GameObject))) as GameObject;
+        GameObject instance = Instantiate(Resources.Load("Table", typeof(GameObject))) as GameObject;
         instance.transform.parent = GameObject.Find("Ground Plane Stage").transform;
     }
 }

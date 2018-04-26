@@ -18,7 +18,7 @@ namespace Lean.Touch
 		public Camera Camera;
 
 #if UNITY_EDITOR
-		protected virtual void Reset()
+        protected virtual void Reset()
 		{
 			Start();
 		}
@@ -32,39 +32,51 @@ namespace Lean.Touch
 			}
 		}
 
-		protected virtual void Update()
-		{
-			// If we require a selectable and it isn't selected, cancel translation
-			if (RequiredSelectable != null && RequiredSelectable.IsSelected == false)
-			{
-				return;
-			}
+        protected virtual void Update()
+        {
+            // If we require a selectable and it isn't selected, cancel translation
+            if (RequiredSelectable != null && RequiredSelectable.IsSelected == false)
+            {
+                return;
+            }
 
-			// Get the fingers we want to use
-			var fingers = LeanTouch.GetFingers(IgnoreGuiFingers, RequiredFingerCount, RequiredSelectable);
+            // Get the fingers we want to use
+            var fingers = LeanTouch.GetFingers(IgnoreGuiFingers, RequiredFingerCount, RequiredSelectable);
 
-			// Calculate the screenDelta value based on these fingers
-			var screenDelta = LeanGesture.GetScreenDelta(fingers);
+            // Calculate the screenDelta value based on these fingers
+            var screenDelta = LeanGesture.GetScreenDelta(fingers);
+            int layerMask = ~LayerMask.GetMask("Ignore Raycast");
 
-			// Perform the translation
-			Translate(screenDelta);
-		}
+            if (Input.GetMouseButton(0))
+            {
+                Ray raycast = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit raycastHit;
+                if (Physics.Raycast(raycast, out raycastHit, Mathf.Infinity, layerMask, QueryTriggerInteraction.UseGlobal))
+                {
+                    // Perform the translation
+                    Debug.Log("Ray hit occurred!");
+                    Translate(screenDelta, raycastHit);
+                }
+            }
+        }
 
-		protected virtual void Translate(Vector2 screenDelta)
+		protected virtual void Translate(Vector2 screenDelta, RaycastHit hit)
 		{
 			// Make sure the camera exists
 			var camera = LeanTouch.GetCamera(Camera, gameObject);
 
 			if (camera != null)
 			{
+                Debug.Log("Calculating new position...");
+                Debug.Log(hit.transform.gameObject.name);
 				// Screen position of the transform
-				var screenPosition = camera.WorldToScreenPoint(transform.position);
+				var screenPosition = camera.WorldToScreenPoint(hit.transform.position);
 
 				// Add the deltaPosition
 				screenPosition += (Vector3)screenDelta;
 
 				// Convert back to world space
-				transform.position = camera.ScreenToWorldPoint(screenPosition);
+			    hit.transform.position = camera.ScreenToWorldPoint(screenPosition);
 			}
 		}
 	}

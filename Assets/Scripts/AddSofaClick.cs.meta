@@ -5,7 +5,9 @@ licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - AnchorStage: {fileID: 1608780458543526, guid: cf19ace87b12c2741979b9582691d60d,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

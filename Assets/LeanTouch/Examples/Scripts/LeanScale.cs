@@ -63,16 +63,27 @@ namespace Lean.Touch
 			var pinchScale   = LeanGesture.GetPinchScale(fingers, WheelSensitivity);
 			var screenCenter = LeanGesture.GetScreenCenter(fingers);
 
-			// Perform the scaling
-			Scale(pinchScale, screenCenter);
+            int layerMask = ~LayerMask.GetMask("Ignore Raycast");
+
+            if (Input.GetMouseButton(0))
+            {
+                Ray raycast = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit raycastHit;
+                if (Physics.Raycast(raycast, out raycastHit, Mathf.Infinity, layerMask, QueryTriggerInteraction.UseGlobal))
+                {
+                    Debug.Log("Ray hit occurred!");
+                    // Perform the scaling
+                    Scale(pinchScale, screenCenter, raycastHit);
+                }
+            }
 		}
 
-		private void Scale(float pinchScale, Vector2 screenCenter)
+		private void Scale(float pinchScale, Vector2 screenCenter, RaycastHit hit)
 		{
 			// Make sure the scale is valid
 			if (pinchScale > 0.0f)
 			{
-				var scale = transform.localScale;
+				var scale = hit.transform.localScale;
 
 				if (Relative == true)
 				{
@@ -82,14 +93,14 @@ namespace Lean.Touch
 					if (camera != null)
 					{
 						// Screen position of the transform
-						var screenPosition = camera.WorldToScreenPoint(transform.position);
+						var screenPosition = camera.WorldToScreenPoint(hit.transform.position);
 
 						// Push the screen position away from the reference point based on the scale
 						screenPosition.x = screenCenter.x + (screenPosition.x - screenCenter.x) * pinchScale;
 						screenPosition.y = screenCenter.y + (screenPosition.y - screenCenter.y) * pinchScale;
 
 						// Convert back to world space
-						transform.position = camera.ScreenToWorldPoint(screenPosition);
+						hit.transform.position = camera.ScreenToWorldPoint(screenPosition);
 
 						// Grow the local scale by scale
 						scale *= pinchScale;
@@ -108,7 +119,7 @@ namespace Lean.Touch
 					scale.z = Mathf.Clamp(scale.z, ScaleMin.z, ScaleMax.z);
 				}
 
-				transform.localScale = scale;
+				hit.transform.localScale = scale;
 			}
 		}
 	}

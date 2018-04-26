@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Name: VuforiaConfiguration
   m_EditorClassIdentifier: 
   vuforia:
-    vuforiaLicenseKey: AQpn/wX/////AAAAGYK043Yz/kTnvIug3XK5eExRVLVn33stDgAXjjwdSmBaDVvylXm1DYnKZHcdETeqJI8dMrRDx0J7qizKYvqOZMzMjyE6HhegNHsG3HYLrCAqkvh1UZu3+NBd8ffZljPOqNQsvepxmOpTe8o0tD9/isShqg+EB9AF8SHjRElWyElvTutiT4u+NAoo9Ipfkq+4bzs7fIFEhdyL/9r5PuT1KsqGvEuQ/Jt8rpZpsDbxItPAsYjQrfdXeb0GF+ObZ0AVozfn2NKZYXUPLjvyszaQCxN1Hr5qUKUF+eKw4LsWe9EZeYHBlBOEpcfdfAaOq9UfV5trLaNRM5ArsJzTZD3E27yVRBlrxgCuSKRVbd0RXafo
-    ufoLicenseKey: QVYzWkxJRC8vLy8vQUFBQUtDWVM2ZVFuY2tsbXBZWCtGUVVRdHBlVmhrL0sySHVTVnZNZjgxZnYrYjZBZFduTGpxUlpjb2duVGtKL1lidEIxdjFuWTdGNldtUWRjdzZpYzZUa2Z5NFhYSkNTZ1hTS0JDblVucFJCU2hIVkV3OFdrdWZiSVlGVTdjSDZHeHM5dUtqWUtneHNlcHdsa21iN1dITnM3YitqRVJGSEVENnJIMU4rWWh4TldjSWlxYkFQWHBabStReitqVHFsRGxPeVV0UkJxdkdMdGxBaVc5L0hscnVaTUZBU0RidXkyTTNEWktseDY5T3grVU52R0JDVExKUXNlSldhVnhDMGN4K1N4MFp1NEJuZTZKNDlHV1k0cE4wNExWNUVHbUV5RC9FbSs0SnVOUVFJOXRmakNiU1QyWWpYTWdNMXEyTHhnSDdzNzIxeGFTN2d0Z045cXhXK0dJV1l6MmYwM0d3bWtLbWVxSFl5YVRVSWNubnQ=
+    vuforiaLicenseKey: AcVrj5r/////AAABmaOEX0Zh/UwJu+ch/AzyOvVkOVcrvw+OgluujKw/64kDu9TUv04QgE4TTwRrQ6rRCHtF9pNKMcELquNbFV54S9yUEPIJsYm6roo+58K/J35z0TNgSOkP3sSMHiir14i5tVoFUNUwIeafNS8DzeofO5P13jPJvlvqs2KKwJyyr0kaOg/Msy7YI5OU1iNFyX19QF8CbnpYKT6WMK3gewUqJRMQm5ThGyjC9mK0qYLnmtNa+Bhdq50K58bNcZ/mCxW3qPIHOvEBPwIXSesYJeyWER1hYRovq3lDU12P1IQyk32WY9SMctlDGrrRc1Nu6P1QEl4GTQocSqn0CxrS+E+3FmjF7DQYhiTNwf3Vr1gqTBHf
+    ufoLicenseKey: QVdqOUpmdi8vLy8vQUFBQUtQMkwrVWhGdGtBb25XREJVODZVSTc0elhWZnZEWW1seHRIcmpOY1lNRTRPcWlWM3FSSEowNk1qOEZIOVQwZ2RidDI2NHV4TDUwMGs4VmVKRURORVd0UGZ3RG1xTDRBbjJiN0IrNzlMNm9QcWc4Q0Ercm5NeTZNelBKTlR4T05oTFdhT3N3bGZJQ1J5M3pjTUxnYTlrTUVZcWd6ckpuVnVsQmNJM1A2RUJGWGNLeUQ5enZZWGNEdUkxWXBsQVNZc1cvY2l6eElvckVmV0xKMFlRTEt3THhkMkJEdENmckU4Y1hmWmg2QThCbDlLSkhERVlZNWNnZ1lwd1U3alVBSEhnMmRGK3IrZUR0aWlDN2l1RThKdFl4UnErcXJGTDhaaVZIdFVwaC9DYmVDcVltZkNzbVdwZXhVZ09OUWZoNlhXYkRxaWNpZjczUG5zVUlQWjltVWgyaE5MZW8rU1dtUE16S2E1L2hDbDg2cW0=
     delayedInitialization: 0
     cameraDeviceModeSetting: -1
     maxSimultaneousImageTargets: 1
-    maxSimultaneousObjectTargets: 1
+    maxSimultaneousObjectTargets: 5
     useDelayedLoadingObjectTargets: 0
     cameraDirection: 0
     mirrorVideoBackground: 0
@@ -43,12 +43,8 @@ MonoBehaviour:
       FieldOfView: {x: 0, y: 0, z: 0, w: 0}
       ContainsMagnet: 0
   databaseLoad:
-    dataSetsToLoad:
-    - VuforiaMars_Images
-    - VuforiaMars_VuMark
-    dataSetsToActivate:
-    - VuforiaMars_Images
-    - VuforiaMars_VuMark
+    dataSetsToLoad: []
+    dataSetsToActivate: []
   videoBackground:
     clippingMode: 0
     numDivisions: 2

@@ -53,11 +53,22 @@ namespace Lean.Touch
 			var center  = LeanGesture.GetScreenCenter(fingers);
 			var degrees = LeanGesture.GetTwistDegrees(fingers);
 
-			// Perform the rotation
-			Rotate(center, degrees);
+            int layerMask = ~LayerMask.GetMask("Ignore Raycast");
+
+            if (Input.GetMouseButton(0))
+            {
+                Ray raycast = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit raycastHit;
+                if (Physics.Raycast(raycast, out raycastHit, Mathf.Infinity, layerMask, QueryTriggerInteraction.UseGlobal))
+                {
+                    Debug.Log("Ray hit occurred!");
+                    // Perform the rotation
+                    Rotate(center, degrees, raycastHit);
+                }
+            }
 		}
 
-		private void Rotate(Vector3 center, float degrees)
+		private void Rotate(Vector3 center, float degrees, RaycastHit hit)
 		{
 			if (Relative == true)
 			{
@@ -70,12 +81,12 @@ namespace Lean.Touch
 					var worldReferencePoint = camera.ScreenToWorldPoint(center);
 
 					// Rotate the transform around the world reference point
-					transform.RotateAround(worldReferencePoint, camera.transform.forward, degrees);
+					hit.transform.RotateAround(worldReferencePoint, camera.transform.forward, degrees);
 				}
 			}
 			else
 			{
-				transform.rotation *= Quaternion.AngleAxis(degrees, RotateAxis);
+				hit.transform.rotation *= Quaternion.AngleAxis(degrees, RotateAxis);
 			}
 		}
 	}
